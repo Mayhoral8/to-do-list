@@ -3,60 +3,67 @@ const toDo = document.querySelector('.to-do');
 const create = document.querySelector('.createBtn');
 let body = document.querySelector('.body');
 const inputs = document.querySelector('.inputs');
-const clearAll = document.querySelector('.clear');
+const bigBody = document.querySelector('.container');
+const clearAll = document.querySelector('.inputs');
+const checkMark =  document.querySelector('.checkmark')
+const deleteMark = document.querySelector('.deletemark')
 
  
-
-
 create.addEventListener('click', function(){
     console.log(toDo.value);
-    if (toDo.value === ''){
-        toDo.textContent = 'Please Enter Text';
-    } else {
     let newToDo = document.createElement('button');
     let deletebtn = document.createElement('button');
     let editbtn = document.createElement('button');
     let doneBtn = document.createElement('button');
-    doneBtn.textContent = 'Complete';
+    if (toDo.value === ''){
+        toDo.textContent = 'Please Enter Text';
+    } else {
+    doneBtn.textContent = checkMark.textContent;
     newToDo.classList.add('newBtn');
       let createBtn;
-    editbtn.textContent = 'Edit';
-    doneBtn.style.marginLeft = '5px'
-    deletebtn.textContent = '❌';
-    deletebtn.style.width = '3%';
+    editbtn.textContent = '🖊';
+    editbtn.classList.add('editbtn');
+    doneBtn.classList.add('doneBtn')
+    deletebtn.textContent = deleteMark.textContent;
+    newToDo.style.width = '40%';
+    newToDo.style.marginLeft = '25.7%'
     newToDo.textContent = toDo.value;
-    console.log(newToDo.style.placeContent);
-    console.log(toDo.value);
-    console.log(newToDo);
-    inputs.appendChild(newToDo);  
-    inputs.appendChild(doneBtn);
-    // inputs.appendChild(editbtn);
-    inputs.appendChild(deletebtn);
+    bigBody.appendChild(newToDo);  
+    bigBody.appendChild(doneBtn);
+    bigBody.appendChild(editbtn);
+    bigBody.appendChild(deletebtn);
     toDo.value = '';
     deletebtn.classList.add('deleteBtn');
-//    newToDo.classList.add('spacer');
    deletebtn.classList.add('spacer');
     deletebtn.addEventListener('click', function (){
-        inputs.removeChild(newToDo);
-        inputs.removeChild(deletebtn);
-        inputs.removeChild(doneBtn);
+        bigBody.removeChild(newToDo);
+        bigBody.removeChild(deletebtn);
+        bigBody.removeChild(doneBtn);
+        bigBody.removeChild(editbtn);
     })
 
     doneBtn.addEventListener('click', function(){
-        // inputs.removeChild(editbtn);
-        inputs.removeChild(deletebtn);
-        doneBtn.textContent = 'Completed ✅';
+        bigBody.removeChild(editbtn);
+        bigBody.removeChild(deletebtn);
+        doneBtn.textContent = '✅';
         doneBtn.classList.add('spacer');
         doneBtn.style.fontWeight = 'bolder';
-        doneBtn.style.marginTop = '10px';
-        newToDo.style.backgroundColor ='rgb(40, 243, 47)';
+        newToDo.style.textDecoration = 'line-through';
+        newToDo.style.fontStyle = 'italic';
     })
-
-    clearAll.addEventListener('click', function(){
-        inputs.removeChild(newToDo);
-        inputs.removeChild(doneBtn);
-        inputs.removeChild(deletebtn);
+    editbtn.addEventListener('click', function (){
+        bigBody.removeChild(newToDo);
+        bigBody.removeChild(deletebtn);
+        bigBody.removeChild(doneBtn);
+        bigBody.removeChild(editbtn);
+        toDo.value = newToDo.textContent;
     })
     
 }
+clearAll.addEventListener('click', function(){
+    bigBody.removeChild(newToDo);
+    bigBody.removeChild(doneBtn);
+    bigBody.removeChild(deletebtn);
+    bigBody.removeChild(editbtn);
+})
 });
