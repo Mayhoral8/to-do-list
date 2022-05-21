@@ -4,11 +4,13 @@ const create = document.querySelector('.createBtn');
 let body = document.querySelector('.body');
 const inputs = document.querySelector('.inputs');
 const bigBody = document.querySelector('.container');
-const clearAll = document.querySelector('.inputs');
+const clearAll = document.querySelector('.clear');
 const checkMark =  document.querySelector('.checkmark')
 const deleteMark = document.querySelector('.deletemark')
 
  
+
+
 create.addEventListener('click', function(){
     console.log(toDo.value);
     let newToDo = document.createElement('button');
@@ -25,8 +27,6 @@ create.addEventListener('click', function(){
     editbtn.classList.add('editbtn');
     doneBtn.classList.add('doneBtn')
     deletebtn.textContent = deleteMark.textContent;
-    newToDo.style.width = '40%';
-    newToDo.style.marginLeft = '25.7%'
     newToDo.textContent = toDo.value;
     bigBody.appendChild(newToDo);  
     bigBody.appendChild(doneBtn);
