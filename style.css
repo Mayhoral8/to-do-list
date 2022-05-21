@@ -8,13 +8,14 @@ body{
 
 
 .newBtn{
-    width: 80%;
+    width: 65%;
     border: none;
     background-color: white;
     height: 20px; 
     padding-left: 10px;
     text-align: left;
     padding-top: 3px;
+    margin-left: 10px;
 }
 .doneBtn{
     height: 20px;
